@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiniela Mundialista 2026</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Iconos amigables -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Encabezado y Navegación -->
+    <header>
+        <div class="header-container">
+            <h1><i class="fa-solid fa-trophy"></i> Quiniela Mundialista 2026</h1>
+            <nav>
+                <ul>
+                    <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                    <li><a href="#calendario">Calendario</a></li>
+                    <li><a href="#reglas">Reglas</a></li>
+                    <li><a href="#videos">Videos</a></li>
+                    <li><a href="#notas">Notas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="container">
+
+        <!-- Sección: Inicio (Aquí va la Quiniela Incrustada) -->
+        <section id="inicio" class="section active-section">
+            <h2><i class="fa-solid fa-star"></i> Tabla de Posiciones y Pronósticos</h2>
+            <p>Revisa en tiempo real cómo van los puntos de la quiniela. ¡Mucha suerte a todos!</p>
+            
+            <!-- Contenedor responsivo para el Excel -->
+            <div class="sheet-container">
+                <iframe src="https://docs.google.com/spreadsheets/d/1oj1x8EXnQ_H_LyknRV1eju_xv2wZ4NL6/preview"></iframe>
+            </div>
+        </section>
+
+        <!-- Sección: Calendario -->
+        <section id="calendario" class="section">
+            <h2><i class="fa-solid fa-calendar-days"></i> Calendario de Partidos</h2>
+            <p>Mantente al tanto de las fechas, horarios y sedes de los encuentros más importantes del torneo.</p>
+            <div class="card">
+                <h3>Próximos Partidos</h3>
+                <p>Aquí puedes escribir las fechas clave o incluso incrustar un calendario más adelante.</p>
+            </div>
+        </section>
+
+        <!-- Sección: Reglas -->
+        <section id="reglas" class="section">
+            <h2><i class="fa-solid fa-book"></i> Reglas del Juego</h2>
+            <p>Para que todo sea justo, estas son las bases de nuestra quiniela:</p>
+            <div class="card">
+                <ul class="reglas-lista">
+                    <li><i class="fa-solid fa-check text-success"></i> <strong>Puntuación:</strong> 3 puntos por achinarle al marcador exacto; 1 punto por achinarle al ganador/empate.</li>
+                    <li><i class="fa-solid fa-check text-success"></i> <strong>Límite:</strong> Los pronósticos se cierran 30 minutos antes de cada partido.</li>
+                    <li><i class="fa-solid fa-check text-success"></i> <strong>Desempate:</strong> En caso de empate al final, el premio se dividirá o se definirá por criterios previamente acordados.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sección: Videos -->
+        <section id="videos" class="section">
+            <h2><i class="fa-solid fa-video"></i> Sección de Videos</h2>
+            <p>Disfruta de los mejores resúmenes, análisis y momentos divertidos del Mundial.</p>
+            <div class="video-grid">
+                <!-- Tarjeta de video ejemplo (Puedes cambiar el enlace de Youtube) -->
+                <div class="card video-card">
+                    <div class="video-responsive">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <h4>Análisis de la Jornada</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Notas -->
+        <section id="notas" class="section">
+            <h2><i class="fa-solid fa-pen-to-square"></i> Notas e Información</h2>
+            <p>Últimas noticias sobre lesionados, alineaciones y todo lo que necesitas saber para armar tu estrategia.</p>
+            <div class="card">
+                <h3>Aviso Importante</h3>
+                <p>¡No olvides registrar tus partidos de la segunda fase a tiempo! Cualquier duda, avisa en el grupo.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2026 Quiniela Mundialista - Creado por Edgar 🚀</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

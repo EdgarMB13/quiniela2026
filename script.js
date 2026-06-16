@@ -62,6 +62,19 @@ function llenarSelectorPronosticos() {
     mostrarQuiniela(selector.value);
   });
 }
+// MOSTRAR PARTIDOS
+const partidosInfo = [
+  { grupo: "Grupo A", partido: "México vs Sudáfrica" },
+  { grupo: "Grupo A", partido: "Corea del Sur vs Chequia" },
+  { grupo: "Grupo B", partido: "Canadá vs Bosnia y Herzegovina" },
+  { grupo: "Grupo D", partido: "Estados Unidos vs Paraguay" },
+  { grupo: "Grupo B", partido: "Qatar vs Suiza" },
+  { grupo: "Grupo C", partido: "Brasil vs Marruecos" },
+  { grupo: "Grupo C", partido: "Haití vs Escocia" },
+  { grupo: "Grupo D", partido: "Australia vs Turquía" }
+];
+
+//FUNCION MOSTRAR QUINIELA 
 
 function mostrarQuiniela(nombre) {
   const contenedor = document.getElementById("quinielaJugador");
@@ -72,16 +85,26 @@ function mostrarQuiniela(nombre) {
 
   contenedor.innerHTML = "";
 
-  persona.jugadas.forEach((pronostico, index) => {
+  partidosInfo.forEach((info, index) => {
+    const pronostico = persona.jugadas[index];
+
     const div = document.createElement("div");
     div.className = "partido-pronostico";
+
     div.innerHTML = `
-      <strong>Partido ${index + 1}</strong>
-      <span>${pronostico}</span>
+      <strong>${info.grupo}</strong>
+      <p>${info.partido}</p>
+      <div class="opciones-pronostico">
+        <span class="${pronostico === "L" ? "seleccionado" : ""}">L</span>
+        <span class="${pronostico === "E" ? "seleccionado" : ""}">E</span>
+        <span class="${pronostico === "V" ? "seleccionado" : ""}">V</span>
+      </div>
     `;
+
     contenedor.appendChild(div);
   });
 }
+//
 
 cargarPronosticos();
 

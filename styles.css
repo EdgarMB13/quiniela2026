@@ -366,10 +366,9 @@ footer {
     background: #f5f5f5;
 }
 .quiniela-grid {
-  margin-top: 25px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 15px;
+  display: flex;
+  flex-direction:column;
+  gap: 20px;
 }
 
 .partido-pronostico {

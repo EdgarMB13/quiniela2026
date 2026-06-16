@@ -27,11 +27,45 @@ const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRZ907S2ZHaBBwKf
 
 let participantes = [];
 
+function parseCSV(texto) {
+  const filas = [];
+  let fila = [];
+  let valor = "";
+  let dentroComillas = false;
+
+  for (let i = 0; i < texto.length; i++) {
+    const char = texto[i];
+
+    if (char === '"') {
+      dentroComillas = !dentroComillas;
+    } else if (char === "," && !dentroComillas) {
+      fila.push(valor.trim().replace(/^"|"$/g, ""));
+      valor = "";
+    } else if ((char === "\n" || char === "\r") && !dentroComillas) {
+      if (valor || fila.length) {
+        fila.push(valor.trim().replace(/^"|"$/g, ""));
+        filas.push(fila);
+      }
+      fila = [];
+      valor = "";
+    } else {
+      valor += char;
+    }
+  }
+
+  if (valor || fila.length) {
+    fila.push(valor.trim().replace(/^"|"$/g, ""));
+    filas.push(fila);
+  }
+
+  return filas;
+}
+
 async function cargarDatos() {
   const respuesta = await fetch(csvUrl);
   const texto = await respuesta.text();
 
-  const filas = texto.trim().split("\n").map(fila => fila.split(","));
+  const filas = parseCSV(texto);
 
   participantes = filas.slice(1).map(fila => ({
     participante: fila[0],
@@ -77,8 +111,9 @@ function mostrarParticipante(nombre) {
   document.getElementById("errores").textContent = persona.errores;
   document.getElementById("puntos").textContent = persona.puntos;
 
-  const efectividadNumero = Number(persona.efectividad.replace(",", "."));
-  document.getElementById("efectividad").textContent = `${Math.round(efectividadNumero * 100)}%`;
+  const efectividadLimpia = persona.efectividad.replace(",", ".").replace(/"/g, "");
+  const efectividadNumero = Number(efectividadLimpia);
 
-  document.getElementById("posicion").textContent = persona.posicion;
+  document.getElementById("efectividad").textContent = `${Math.round(efectividadNumero * 100)}%`;
+  document.getElementById("posicion").textContent = persona.posicion.replace(/"/g, "");
 }

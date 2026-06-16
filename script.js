@@ -23,6 +23,68 @@ document.addEventListener('DOMContentLoaded', () => {
   cargarDatos();
 });
 
+const csvPronosticosUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRZ907S2ZHaBBwKfbll6-AOVt6pwYuUHE4U-O48D4utO8Avi7YUrEuTNnXbXT9sRlGUETmvEsU7ZkHF/pub?gid=1579027194&single=true&output=csv";
+
+let pronosticos = [];
+
+async function cargarPronosticos() {
+  const respuesta = await fetch(csvPronosticosUrl);
+  const texto = await respuesta.text();
+
+  const filas = parseCSV(texto);
+
+  pronosticos = filas.slice(1).map(fila => ({
+    participante: fila[0],
+    jugadas: fila.slice(1)
+  }));
+
+  llenarSelectorPronosticos();
+
+  if (pronosticos.length > 0) {
+    mostrarQuiniela(pronosticos[0].participante);
+  }
+}
+
+function llenarSelectorPronosticos() {
+  const selector = document.getElementById("selectorPronostico");
+  if (!selector) return;
+
+  selector.innerHTML = "";
+
+  pronosticos.forEach(persona => {
+    const option = document.createElement("option");
+    option.value = persona.participante;
+    option.textContent = persona.participante;
+    selector.appendChild(option);
+  });
+
+  selector.addEventListener("change", () => {
+    mostrarQuiniela(selector.value);
+  });
+}
+
+function mostrarQuiniela(nombre) {
+  const contenedor = document.getElementById("quinielaJugador");
+  if (!contenedor) return;
+
+  const persona = pronosticos.find(p => p.participante === nombre);
+  if (!persona) return;
+
+  contenedor.innerHTML = "";
+
+  persona.jugadas.forEach((pronostico, index) => {
+    const div = document.createElement("div");
+    div.className = "partido-pronostico";
+    div.innerHTML = `
+      <strong>Partido ${index + 1}</strong>
+      <span>${pronostico}</span>
+    `;
+    contenedor.appendChild(div);
+  });
+}
+
+cargarPronosticos();
+
 const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRZ907S2ZHaBBwKfbll6-AOVt6pwYuUHE4U-O48D4utO8Avi7YUrEuTNnXbXT9sRlGUETmvEsU7ZkHF/pub?gid=521377650&single=true&output=csv";
 
 let participantes = [];

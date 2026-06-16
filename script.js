@@ -71,7 +71,34 @@ const partidosInfo = [
   { grupo: "Grupo B", partido: "Qatar vs Suiza" },
   { grupo: "Grupo C", partido: "Brasil vs Marruecos" },
   { grupo: "Grupo C", partido: "Haití vs Escocia" },
-  { grupo: "Grupo D", partido: "Australia vs Turquía" }
+  { grupo: "Grupo D", partido: "Australia vs Turquía" },
+
+  { grupo: "Grupo E", partido: "Alemania vs Curazao" },
+  { grupo: "Grupo F", partido: "Países Bajos vs Japón" },
+  { grupo: "Grupo E", partido: "Costa de Marfil vs Ecuador" },
+  { grupo: "Grupo F", partido: "Suecia vs Túnez" },
+  { grupo: "Grupo H", partido: "España vs Cabo Verde" },
+  { grupo: "Grupo G", partido: "Bélgica vs Egipto" },
+  { grupo: "Grupo H", partido: "Arabia Saudita vs Uruguay" },
+  { grupo: "Grupo G", partido: "Irán vs Nueva Zelanda" },
+
+  { grupo: "Grupo I", partido: "Francia vs Senegal" },
+  { grupo: "Grupo I", partido: "Irak vs Noruega" },
+  { grupo: "Grupo J", partido: "Argentina vs Argelia" },
+  { grupo: "Grupo J", partido: "Austria vs Jordania" },
+  { grupo: "Grupo K", partido: "Portugal vs RD Congo" },
+  { grupo: "Grupo L", partido: "Inglaterra vs Croacia" },
+  { grupo: "Grupo L", partido: "Ghana vs Panamá" },
+  { grupo: "Grupo K", partido: "Uzbekistán vs Colombia" },
+
+  { grupo: "Grupo A", partido: "Sudáfrica vs Chequia" },
+  { grupo: "Grupo B", partido: "Bosnia y Herzegovina vs Suiza" },
+  { grupo: "Grupo B", partido: "Canadá vs Qatar" },
+  { grupo: "Grupo A", partido: "México vs Corea del Sur" },
+  { grupo: "Grupo D", partido: "Estados Unidos vs Australia" },
+  { grupo: "Grupo C", partido: "Marruecos vs Escocia" },
+  { grupo: "Grupo C", partido: "Brasil vs Haití" },
+  { grupo: "Grupo D", partido: "Paraguay vs Turquía" }
 ];
 
 //FUNCION MOSTRAR QUINIELA 

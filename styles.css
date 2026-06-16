@@ -365,3 +365,28 @@ footer {
 .ranking-web tr:nth-child(even) {
     background: #f5f5f5;
 }
+.quiniela-grid {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+}
+
+.partido-pronostico {
+  background: #ffffff;
+  border: 2px solid #0b5e3b;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+}
+
+.partido-pronostico strong {
+  display: block;
+  color: #0b5e3b;
+  margin-bottom: 8px;
+}
+
+.partido-pronostico span {
+  font-size: 28px;
+  font-weight: bold;
+}

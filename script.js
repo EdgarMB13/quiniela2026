@@ -153,33 +153,77 @@ const partidosInfo = [
 //FUNCION MOSTRAR QUINIELA 
 
 function mostrarQuiniela(nombre) {
+
   const contenedor = document.getElementById("quinielaJugador");
+
   if (!contenedor) return;
 
-  const persona = pronosticos.find(p => p.participante === nombre);
+  const persona = pronosticos.find(
+    p => p.participante === nombre
+  );
+
   if (!persona) return;
 
   contenedor.innerHTML = "";
 
-  partidosInfo.forEach((info, index) => {
-    const pronostico = persona.jugadas[index];
+  const grupos = agruparPorGrupo(partidosInfo);
 
-    const div = document.createElement("div");
-    div.className = "partido-pronostico";
+  Object.keys(grupos).forEach(grupo => {
 
-    div.innerHTML = `
-      <strong>${info.grupo}</strong>
-      <p>${info.partido}</p>
-      <div class="opciones-pronostico">
-        <span class="${pronostico === "L" ? "seleccionado" : ""}">L</span>
-        <span class="${pronostico === "E" ? "seleccionado" : ""}">E</span>
-        <span class="${pronostico === "V" ? "seleccionado" : ""}">V</span>
-      </div>
+    const bloqueGrupo = document.createElement("div");
+    bloqueGrupo.className = "grupo-completo";
+
+    bloqueGrupo.innerHTML = `
+      <h3>${grupo}</h3>
     `;
 
-    contenedor.appendChild(div);
+    grupos[grupo].forEach(partido => {
+
+      const pronostico =
+        persona.jugadas[partido.index];
+
+      const tarjeta = document.createElement("div");
+
+      tarjeta.className = "partido-pronostico";
+
+      tarjeta.innerHTML = `
+        <p>${partido.partido}</p>
+
+        <div class="opciones-pronostico">
+          <span class="${pronostico === "L" ? "seleccionado" : ""}">L</span>
+          <span class="${pronostico === "E" ? "seleccionado" : ""}">E</span>
+          <span class="${pronostico === "V" ? "seleccionado" : ""}">V</span>
+        </div>
+      `;
+
+      bloqueGrupo.appendChild(tarjeta);
+    });
+
+    contenedor.appendChild(bloqueGrupo);
+
   });
+
 }
+
+
+// EMPIEZA 
+function agruparPorGrupo(partidos) {
+  const grupos = {};
+
+  partidos.forEach((partido, index) => {
+    if (!grupos[partido.grupo]) {
+      grupos[partido.grupo] = [];
+    }
+
+    grupos[partido.grupo].push({
+      ...partido,
+      index
+    });
+  });
+
+  return grupos;
+}
+
 //
 
 cargarPronosticos();

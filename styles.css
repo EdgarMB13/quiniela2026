@@ -427,3 +427,25 @@ footer {
 .partido-pronostico{
   margin-bottom:15px;
 }
+.partido-pronostico.pendiente {
+  border-color: #bdbdbd;
+  background: #fafafa;
+}
+
+.partido-pronostico.acierto {
+  border-color: #0b8f4d;
+  background: #e8f7ee;
+}
+
+.partido-pronostico.error {
+  border-color: #b3261e;
+  background: #fdecea;
+}
+
+.partido-pronostico small {
+  display: block;
+  margin: 8px 0 10px;
+  font-size: 14px;
+  color: #555;
+  font-weight: bold;
+}

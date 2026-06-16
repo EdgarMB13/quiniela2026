@@ -98,7 +98,56 @@ const partidosInfo = [
   { grupo: "Grupo D", partido: "Estados Unidos vs Australia" },
   { grupo: "Grupo C", partido: "Marruecos vs Escocia" },
   { grupo: "Grupo C", partido: "Brasil vs Haití" },
-  { grupo: "Grupo D", partido: "Paraguay vs Turquía" }
+  { grupo: "Grupo D", partido: "Paraguay vs Turquía" },
+  { grupo: "Grupo F", partido: "Países Bajos vs Suecia" },
+  { grupo: "Grupo E", partido: "Alemania vs Costa de Marfil" },
+  { grupo: "Grupo E", partido: "Curazao vs Ecuador" },
+  { grupo: "Grupo F", partido: "Japón vs Túnez" },
+
+  { grupo: "Grupo H", partido: "España vs Arabia Saudita" },
+  { grupo: "Grupo G", partido: "Bélgica vs Irán" },
+  { grupo: "Grupo H", partido: "Cabo Verde vs Uruguay" },
+  { grupo: "Grupo G", partido: "Egipto vs Nueva Zelanda" },
+
+  { grupo: "Grupo J", partido: "Argentina vs Austria" },
+  { grupo: "Grupo I", partido: "Francia vs Irak" },
+  { grupo: "Grupo I", partido: "Senegal vs Noruega" },
+  { grupo: "Grupo J", partido: "Argelia vs Jordania" },
+
+  { grupo: "Grupo K", partido: "Portugal vs Uzbekistán" },
+  { grupo: "Grupo L", partido: "Inglaterra vs Ghana" },
+  { grupo: "Grupo L", partido: "Croacia vs Panamá" },
+  { grupo: "Grupo K", partido: "RD Congo vs Colombia" },
+
+  { grupo: "Grupo B", partido: "Canadá vs Suiza" },
+  { grupo: "Grupo B", partido: "Bosnia y Herzegovina vs Qatar" },
+  { grupo: "Grupo C", partido: "Brasil vs Escocia" },
+  { grupo: "Grupo C", partido: "Marruecos vs Haití" },
+
+  { grupo: "Grupo A", partido: "México vs Chequia" },
+  { grupo: "Grupo A", partido: "Sudáfrica vs Corea del Sur" },
+  { grupo: "Grupo E", partido: "Curazao vs Costa de Marfil" },
+  { grupo: "Grupo E", partido: "Alemania vs Ecuador" },
+
+  { grupo: "Grupo F", partido: "Japón vs Suecia" },
+  { grupo: "Grupo F", partido: "Países Bajos vs Túnez" },
+  { grupo: "Grupo D", partido: "Estados Unidos vs Turquía" },
+  { grupo: "Grupo D", partido: "Paraguay vs Australia" },
+
+  { grupo: "Grupo I", partido: "Francia vs Noruega" },
+  { grupo: "Grupo I", partido: "Senegal vs Irak" },
+  { grupo: "Grupo H", partido: "Cabo Verde vs Arabia Saudita" },
+  { grupo: "Grupo H", partido: "España vs Uruguay" },
+
+  { grupo: "Grupo G", partido: "Egipto vs Irán" },
+  { grupo: "Grupo G", partido: "Bélgica vs Nueva Zelanda" },
+  { grupo: "Grupo L", partido: "Inglaterra vs Panamá" },
+  { grupo: "Grupo L", partido: "Croacia vs Ghana" },
+
+  { grupo: "Grupo K", partido: "Portugal vs Colombia" },
+  { grupo: "Grupo K", partido: "RD Congo vs Uzbekistán" },
+  { grupo: "Grupo J", partido: "Argelia vs Austria" },
+  { grupo: "Grupo J", partido: "Argentina vs Jordania" }
 ];
 
 //FUNCION MOSTRAR QUINIELA 

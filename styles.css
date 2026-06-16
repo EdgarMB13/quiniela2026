@@ -390,3 +390,25 @@ footer {
   font-size: 28px;
   font-weight: bold;
 }
+.opciones-pronostico {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.opciones-pronostico span {
+  border: 2px solid #0b5e3b;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.opciones-pronostico .seleccionado {
+  background: #0b5e3b;
+  color: white;
+}

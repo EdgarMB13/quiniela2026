@@ -77,6 +77,7 @@ async function cargarDatos() {
   }));
 
   llenarSelector();
+  mostrarRanking();
 
   if (participantes.length > 0) {
     mostrarParticipante(participantes[0].participante);
@@ -116,4 +117,24 @@ function mostrarParticipante(nombre) {
 
   document.getElementById("efectividad").textContent = `${Math.round(efectividadNumero * 100)}%`;
   document.getElementById("posicion").textContent = persona.posicion.replace(/"/g, "");
+}
+function mostrarRanking() {
+  const tabla = document.getElementById("tablaRanking");
+  if (!tabla) return;
+
+  tabla.innerHTML = "";
+
+  const ranking = [...participantes].sort((a, b) => Number(a.posicion) - Number(b.posicion));
+
+  ranking.forEach(persona => {
+    const fila = document.createElement("tr");
+
+    fila.innerHTML = `
+      <td>${persona.posicion}</td>
+      <td>${persona.participante}</td>
+      <td>${persona.puntos}</td>
+    `;
+
+    tabla.appendChild(fila);
+  });
 }

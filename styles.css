@@ -428,18 +428,18 @@ footer {
   margin-bottom:15px;
 }
 .partido-pronostico.pendiente {
-  border-color: #bdbdbd;
-  background: #fafafa;
+  border:3px solid #bdbdbd;
+  background: #f5f5f5;
 }
 
 .partido-pronostico.acierto {
-  border-color: #0b8f4d;
-  background: #e8f7ee;
+  border:3px solid #1b8f3c;
+  background: #e8f7e8;
 }
 
 .partido-pronostico.error {
-  border-color: #b3261e;
-  background: #fdecea;
+  border:3px solid #d32f2f;
+  background: #ffeaea;
 }
 
 .partido-pronostico small {

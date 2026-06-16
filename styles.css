@@ -332,3 +332,36 @@ footer {
     font-size: 28px;
     color: #0b5e3b;
 }
+.ranking-web {
+    margin-top: 30px;
+}
+
+.ranking-web h3 {
+    color: #0b5e3b;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.ranking-web table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.ranking-web th {
+    background: #0b5e3b;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.ranking-web td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.ranking-web tr:nth-child(even) {
+    background: #f5f5f5;
+}

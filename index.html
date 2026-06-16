@@ -33,6 +33,41 @@
         <section id="inicio" class="section active-section">
             <h2><i class="fa-solid fa-star"></i> Tabla de Posiciones y Pronósticos</h2>
             <p>Revisa los prnósticos y cómo van los puntos de cada uno de los participantes de la Quiniela Mundialista. ¡Mucho ÉXITO a todos!</p>
+        
+        <!-- Contenedor donde estan los pronosticos -->
+        <section class="dashboard-web">
+          <h2>🏆 Dashboard de Participantes</h2>
+
+          <label for="selectorParticipante">Selecciona participante:</label>
+          <select id="selectorParticipante"></select>
+
+          <div class="tarjetas">
+            <div class="tarjeta">
+              <span>Aciertos</span>
+              <strong id="aciertos">-</strong>
+            </div>
+
+            <div class="tarjeta">
+              <span>Errores</span>
+              <strong id="errores">-</strong>
+            </div>
+
+            <div class="tarjeta">
+              <span>Puntos</span>
+              <strong id="puntos">-</strong>
+            </div>
+
+            <div class="tarjeta">
+              <span>Efectividad</span>
+              <strong id="efectividad">-</strong>
+            </div>
+
+            <div class="tarjeta">
+              <span>Posición</span>
+              <strong id="posicion">-</strong>
+            </div>
+          </div>
+        </section>    
             
             <!-- Contenedor responsivo para el Excel -->
             <div class="sheet-container">

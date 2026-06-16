@@ -178,24 +178,35 @@ function mostrarQuiniela(nombre) {
     `;
 
     grupos[grupo].forEach(partido => {
+//
+const pronostico = (persona.jugadas[partido.index] || "").trim().toUpperCase();
 
-      const pronostico =
-        persona.jugadas[partido.index];
+const datosResultado = participantes.find(p => p.participante === nombre);
+const resultado = datosResultado && datosResultado.resultados
+  ? (datosResultado.resultados[partido.index] || "").trim().toUpperCase()
+  : "";
 
-      const tarjeta = document.createElement("div");
+let estado = "pendiente";
 
-      tarjeta.className = "partido-pronostico";
+if (resultado !== "") {
+  estado = pronostico === resultado ? "acierto" : "error";
+}
 
-      tarjeta.innerHTML = `
-        <p>${partido.partido}</p>
+const tarjeta = document.createElement("div");
 
-        <div class="opciones-pronostico">
-          <span class="${pronostico === "L" ? "seleccionado" : ""}">L</span>
-          <span class="${pronostico === "E" ? "seleccionado" : ""}">E</span>
-          <span class="${pronostico === "V" ? "seleccionado" : ""}">V</span>
-        </div>
-      `;
+tarjeta.className = `partido-pronostico ${estado}`;
 
+tarjeta.innerHTML = `
+  <p>${partido.partido}</p>
+  <small>Resultado: ${resultado || "Pendiente"}</small>
+
+  <div class="opciones-pronostico">
+    <span class="${pronostico === "L" ? "seleccionado" : ""}">L</span>
+    <span class="${pronostico === "E" ? "seleccionado" : ""}">E</span>
+    <span class="${pronostico === "V" ? "seleccionado" : ""}">V</span>
+  </div>
+`;
+//
       bloqueGrupo.appendChild(tarjeta);
     });
 
@@ -271,16 +282,18 @@ async function cargarDatos() {
   const texto = await respuesta.text();
 
   const filas = parseCSV(texto);
-
+//
   participantes = filas.slice(1).map(fila => ({
-    participante: fila[0],
-    aciertos: fila[1],
-    errores: fila[2],
-    puntos: fila[3],
-    efectividad: fila[4],
-    posicion: fila[5]
-  }));
-
+  participante: fila[0],
+  aciertos: fila[1],
+  errores: fila[2],
+  puntos: fila[3],
+  efectividad: fila[4],
+  posicion: fila[5],
+  resultados: fila.slice(6)
+}));
+//
+  
   llenarSelector();
   mostrarRanking();
 

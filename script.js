@@ -130,7 +130,7 @@ function mostrarRanking() {
     const fila = document.createElement("tr");
 
     fila.innerHTML = `
-      <td>${persona.posicion}</td>
+      <td>${persona.posicion.replace(/"/g, "")}</td>
       <td>${persona.participante}</td>
       <td>${persona.puntos}</td>
     `;

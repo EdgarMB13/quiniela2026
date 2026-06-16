@@ -412,3 +412,19 @@ footer {
   background: #0b5e3b;
   color: white;
 }
+.grupo-completo{
+  margin-bottom:40px;
+}
+
+.grupo-completo h3{
+  background:#0b5e3b;
+  color:white;
+  padding:12px;
+  border-radius:10px;
+  text-align:center;
+  margin-bottom:15px;
+}
+
+.partido-pronostico{
+  margin-bottom:15px;
+}

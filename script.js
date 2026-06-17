@@ -169,8 +169,16 @@ function mostrarQuiniela(nombre) {
   contenedor.innerHTML = "";
 
   const grupos = agruparPorGrupo(partidosInfo);
+// agrego nueva instruccion
 
-  Object.keys(grupos).forEach(grupo => {
+  const ordenGrupos = [
+  "Grupo A", "Grupo B", "Grupo C", "Grupo D",
+  "Grupo E", "Grupo F", "Grupo G", "Grupo H",
+  "Grupo I", "Grupo J", "Grupo K", "Grupo L"
+];
+
+ordenGrupos.forEach(grupo => {
+  if (!grupos[grupo]) return;
 
     const bloqueGrupo = document.createElement("div");
     bloqueGrupo.className = "grupo-completo";

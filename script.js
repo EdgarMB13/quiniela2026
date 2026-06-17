@@ -20,7 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  cargarDatos();
+  cargarDatos().then(() => {
+    cargarPronosticos();
+  });
 });
 
 const csvPronosticosUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRZ907S2ZHaBBwKfbll6-AOVt6pwYuUHE4U-O48D4utO8Avi7YUrEuTNnXbXT9sRlGUETmvEsU7ZkHF/pub?gid=1579027194&single=true&output=csv";
@@ -180,11 +182,8 @@ function mostrarQuiniela(nombre) {
     grupos[grupo].forEach(partido => {
 //
 const pronostico = (persona.jugadas[partido.index] || "").trim().toUpperCase();
-
-const datosResultado = participantes.find(p => p.participante === nombre);
-const resultado = datosResultado && datosResultado.resultados
-  ? (datosResultado.resultados[partido.index] || "").trim().toUpperCase()
-  : "";
+// MODIFICADO 17 JUNIO
+const resultado = (resultadosOficiales[partido.index] || "").trim().toUpperCase();
 
 let estado = "pendiente";
 
@@ -237,11 +236,12 @@ function agruparPorGrupo(partidos) {
 
 //
 
-cargarPronosticos();
-
 const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRZ907S2ZHaBBwKfbll6-AOVt6pwYuUHE4U-O48D4utO8Avi7YUrEuTNnXbXT9sRlGUETmvEsU7ZkHF/pub?gid=521377650&single=true&output=csv";
 
 let participantes = [];
+
+//agrregue esta linea
+let resultadosOficiales = [];
 
 function parseCSV(texto) {
   const filas = [];
@@ -282,7 +282,9 @@ async function cargarDatos() {
   const texto = await respuesta.text();
 
   const filas = parseCSV(texto);
-//
+//agregada esta linea 17 de junio
+  resultadosOficiales = filas[1].slice(6);
+  
   participantes = filas.slice(1).map(fila => ({
   participante: fila[0],
   aciertos: fila[1],
@@ -290,7 +292,7 @@ async function cargarDatos() {
   puntos: fila[3],
   efectividad: fila[4],
   posicion: fila[5],
-  resultados: fila.slice(6)
+  // quite esta instruccion 17 de junio resultados: fila.slice(6)
 }));
 //
   

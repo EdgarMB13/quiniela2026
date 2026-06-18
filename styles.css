@@ -365,10 +365,15 @@ footer {
 .ranking-web tr:nth-child(even) {
     background: #f5f5f5;
 }
+
 .quiniela-grid {
-  display: flex;
-  flex-direction:column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+}
+
+.grupo-completo {
+  width: 100%;
 }
 
 .partido-pronostico {

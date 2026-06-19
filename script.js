@@ -1,3 +1,4 @@
+import { registrarVisita } from "./firebase.js";
 document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('nav ul li a');
   const sections = document.querySelectorAll('.section');
@@ -21,8 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   cargarDatos().then(() => {
-    cargarPronosticos();
-  });
+  cargarPronosticos();
+});
+
+registrarVisita().then(total => {
+  const contador = document.getElementById("contadorVisitas");
+  if (contador) {
+    contador.textContent = total;
+  }
+});
 });
 
 const csvPronosticosUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRZ907S2ZHaBBwKfbll6-AOVt6pwYuUHE4U-O48D4utO8Avi7YUrEuTNnXbXT9sRlGUETmvEsU7ZkHF/pub?gid=1579027194&single=true&output=csv";

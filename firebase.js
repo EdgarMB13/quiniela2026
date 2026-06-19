@@ -30,14 +30,3 @@ export async function registrarVisita() {
   const snap = await getDoc(ref);
   return snap.data().total;
 }
-
-//
-//
-import { registrarVisita } from "./firebase.js";
-
-registrarVisita().then(total => {
-  const contador = document.getElementById("contadorVisitas");
-  if (contador) {
-    contador.textContent = total;
-  }
-});

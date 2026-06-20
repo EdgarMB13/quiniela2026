@@ -454,3 +454,12 @@ footer {
   color: #555;
   font-weight: bold;
 }
+
+.contador-visitas {
+    text-align: center;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background: #0b5d2a;
+}

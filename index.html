@@ -722,9 +722,9 @@
                 <!-- VIDEO 1 -->
                 <div class="card video-card">
                     <div class="video-responsive">
-                        <iframe src="https://www.youtube.com/embed/lGJ8jX9cGFI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/lE7WI0atFLw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
-                    <h4>¡TALAAAA! LA ATAJADA DEL TORNEO vs México | Corea del Sur | Copa Mundial de la FIFA 2026</h4>
+                    <h4>España vs Arabia Saudita | RESUMEN Express</h4>
                 </div>
             </div>
             <div class="video-grid">
@@ -772,6 +772,7 @@
         </section>
         <!-- Sección: Comunidad -->
 
+    <!-- Sección: Comunidad -->
         <section id="comunidad" class="section">
 
             <h2>💬 Comunidad</h2>
@@ -783,17 +784,27 @@
 
             <div class="card">
 
-                <h3>🚧 Comunidad en construcción</h3>
+                <h3>📝 Nueva publicación</h3>
 
-                <p>
-                    Próximamente podrás crear publicaciones,
-                    comentar y dar likes.
-                </p>
+                <input type="text"
+                       id="tituloPost"
+                       placeholder="Título de la publicación"
+                       style="width:100%;padding:10px;margin-bottom:10px;">
+
+                <textarea id="contenidoPost"
+                          placeholder="¿Qué quieres compartir?"
+                          rows="4"
+                          style="width:100%;padding:10px;"></textarea>
+
+                <button onclick="crearPost()" class="btn">
+                    Publicar
+                </button>
 
             </div>
 
-        </section>
+            <div id="listaPosts"></div>
 
+        </section>
         
     </main>
     

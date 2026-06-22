@@ -320,9 +320,53 @@ async function cargarDatos() {
   }
 }
 
-// foro agregado
+// =====================================
+// FORO COMUNIDAD
+// =====================================
 
-function crearPost(){
+let publicaciones =
+    JSON.parse(localStorage.getItem("foroQuiniela")) || [];
+
+function guardarPosts() {
+
+    localStorage.setItem(
+        "foroQuiniela",
+        JSON.stringify(publicaciones)
+    );
+
+}
+
+function mostrarPosts() {
+
+    const lista =
+        document.getElementById("listaPosts");
+
+    if (!lista) return;
+
+    lista.innerHTML = "";
+
+    publicaciones
+        .slice()
+        .reverse()
+        .forEach(post => {
+
+            lista.innerHTML += `
+                <div class="post">
+                    <h3>${post.titulo}</h3>
+
+                    <small>
+                        ${post.fecha}
+                    </small>
+
+                    <p>${post.contenido}</p>
+                </div>
+            `;
+
+        });
+
+}
+
+function crearPost() {
 
     const titulo =
         document.getElementById("tituloPost").value.trim();
@@ -330,8 +374,12 @@ function crearPost(){
     const contenido =
         document.getElementById("contenidoPost").value.trim();
 
-    if(!titulo || !contenido){
-        alert("Debes escribir un título y contenido.");
+    if (!titulo || !contenido) {
+
+        alert(
+            "Debes escribir un título y contenido."
+        );
+
         return;
     }
 
@@ -347,10 +395,20 @@ function crearPost(){
     document.getElementById("contenidoPost").value = "";
 
     mostrarPosts();
+
 }
 
+// Hace visible la función para el botón HTML
 window.crearPost = crearPost;
-/////////////////////////////// foro
+
+// Cargar publicaciones guardadas
+document.addEventListener("DOMContentLoaded", () => {
+    mostrarPosts();
+});
+
+// =====================================
+// FIN FORO
+// =====================================
 
 function llenarSelector() {
   const selector = document.getElementById("selectorParticipante");

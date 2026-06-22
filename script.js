@@ -320,6 +320,81 @@ async function cargarDatos() {
   }
 }
 
+// foro agregado
+
+let publicaciones =
+    JSON.parse(localStorage.getItem("foroQuiniela")) || [];
+
+function guardarPosts(){
+    localStorage.setItem(
+        "foroQuiniela",
+        JSON.stringify(publicaciones)
+    );
+}
+
+function mostrarPosts(){
+
+    const lista =
+        document.getElementById("listaPosts");
+
+    lista.innerHTML = "";
+
+    publicaciones
+        .slice()
+        .reverse()
+        .forEach(post => {
+
+            lista.innerHTML += `
+                <div class="post">
+                    <h3>${post.titulo}</h3>
+
+                    <small>
+                        ${post.fecha}
+                    </small>
+
+                    <p>${post.contenido}</p>
+                </div>
+            `;
+        });
+}
+
+function crearPost(){
+
+    const titulo =
+        document.getElementById("tituloPost").value.trim();
+
+    const contenido =
+        document.getElementById("contenidoPost").value.trim();
+
+    if(!titulo || !contenido){
+
+        alert(
+            "Debes escribir un título y contenido."
+        );
+
+        return;
+    }
+
+    publicaciones.push({
+        titulo,
+        contenido,
+        fecha: new Date().toLocaleString()
+    });
+
+    guardarPosts();
+
+    document.getElementById("tituloPost").value = "";
+    document.getElementById("contenidoPost").value = "";
+
+    mostrarPosts();
+}
+
+if (document.getElementById("listaPosts")) {
+  mostrarPosts();
+}
+
+/////////////////////////////// foro
+
 function llenarSelector() {
   const selector = document.getElementById("selectorParticipante");
 

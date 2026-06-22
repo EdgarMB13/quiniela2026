@@ -1,11 +1,16 @@
 // firebase.js
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
 import {
   getFirestore,
   doc,
   getDoc,
   updateDoc,
-  increment
+  increment,
+  collection,
+  addDoc,
+  getDocs
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -20,7 +25,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// =====================================
+// CONTADOR DE VISITAS
+// =====================================
+
 export async function registrarVisita() {
+
   const ref = doc(db, "contador", "visitas");
 
   await updateDoc(ref, {
@@ -28,5 +38,52 @@ export async function registrarVisita() {
   });
 
   const snap = await getDoc(ref);
+
   return snap.data().total;
+
+}
+
+// =====================================
+// FORO - GUARDAR PUBLICACIONES
+// =====================================
+
+export async function guardarPublicacion(
+  titulo,
+  contenido
+) {
+
+  await addDoc(
+    collection(db, "publicaciones"),
+    {
+      titulo,
+      contenido,
+      fecha: new Date().toLocaleString()
+    }
+  );
+
+}
+
+// =====================================
+// FORO - OBTENER PUBLICACIONES
+// =====================================
+
+export async function obtenerPublicaciones() {
+
+  const snapshot = await getDocs(
+    collection(db, "publicaciones")
+  );
+
+  const publicaciones = [];
+
+  snapshot.forEach(doc => {
+
+    publicaciones.push({
+      id: doc.id,
+      ...doc.data()
+    });
+
+  });
+
+  return publicaciones;
+
 }

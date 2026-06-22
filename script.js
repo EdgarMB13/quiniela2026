@@ -322,42 +322,6 @@ async function cargarDatos() {
 
 // foro agregado
 
-let publicaciones =
-    JSON.parse(localStorage.getItem("foroQuiniela")) || [];
-
-function guardarPosts(){
-    localStorage.setItem(
-        "foroQuiniela",
-        JSON.stringify(publicaciones)
-    );
-}
-
-function mostrarPosts(){
-
-    const lista =
-        document.getElementById("listaPosts");
-
-    lista.innerHTML = "";
-
-    publicaciones
-        .slice()
-        .reverse()
-        .forEach(post => {
-
-            lista.innerHTML += `
-                <div class="post">
-                    <h3>${post.titulo}</h3>
-
-                    <small>
-                        ${post.fecha}
-                    </small>
-
-                    <p>${post.contenido}</p>
-                </div>
-            `;
-        });
-}
-
 function crearPost(){
 
     const titulo =
@@ -367,11 +331,7 @@ function crearPost(){
         document.getElementById("contenidoPost").value.trim();
 
     if(!titulo || !contenido){
-
-        alert(
-            "Debes escribir un título y contenido."
-        );
-
+        alert("Debes escribir un título y contenido.");
         return;
     }
 
@@ -389,10 +349,7 @@ function crearPost(){
     mostrarPosts();
 }
 
-if (document.getElementById("listaPosts")) {
-  mostrarPosts();
-}
-
+window.crearPost = crearPost;
 /////////////////////////////// foro
 
 function llenarSelector() {

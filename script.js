@@ -3,7 +3,7 @@ import {
   guardarPublicacion,
   obtenerPublicaciones
 } from "./firebase.js";
-from "./firebase.js";
+
 document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('nav ul li a');
   const sections = document.querySelectorAll('.section');

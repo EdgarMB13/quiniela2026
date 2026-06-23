@@ -418,6 +418,40 @@ async function cargarComentarios(publicacionId) {
 
 // FIN DE CARGAR COMENTARIOS
 
+//Crear comentarios
+async function crearComentario(publicacionId) {
+
+    const textarea =
+        document.getElementById(
+            `comentario-${publicacionId}`
+        );
+
+    const texto =
+        textarea.value.trim();
+
+    if (!texto) {
+
+        alert(
+            "Escribe un comentario."
+        );
+
+        return;
+
+    }
+
+    await guardarComentario(
+        publicacionId,
+        texto
+    );
+
+    textarea.value = "";
+
+    cargarComentarios(
+        publicacionId
+    );
+
+}
+//Fin de crear comentarios
 async function crearPost() {
 
     const titulo =
@@ -449,6 +483,8 @@ async function crearPost() {
 
 // Hace visible la función para el botón HTML
 window.crearPost = crearPost;
+window.crearComentario =
+    crearComentario;
 
 // Cargar publicaciones al abrir la página
 document.addEventListener("DOMContentLoaded", () => {

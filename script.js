@@ -377,16 +377,15 @@ async function mostrarPosts() {
 
         });
 
-    // AQUÍ VA
-  
     for (const post of publicaciones) {
 
-        cargarComentarios(post.id);
+        await cargarComentarios(
+            post.id
+        );
 
     }
 
 }
-
 // CARGAR COMENTARIOS
 async function cargarComentarios(publicacionId) {
 
@@ -406,11 +405,27 @@ async function cargarComentarios(publicacionId) {
 
     comentarios.forEach(comentario => {
 
-        contenedor.innerHTML += `
-            <div class="comentario">
-                ${comentario.texto}
-            </div>
-        `;
+contenedor.innerHTML += `
+
+    <div class="comentario">
+
+        <strong>
+            👤 ${comentario.usuario}
+        </strong>
+
+        <br>
+
+        💬 ${comentario.texto}
+
+        <br>
+
+        <small>
+            ${comentario.fecha}
+        </small>
+
+    </div>
+
+`;
 
     });
 
@@ -419,15 +434,29 @@ async function cargarComentarios(publicacionId) {
 // FIN DE CARGAR COMENTARIOS
 
 //Crear comentarios
-async function crearComentario(publicacionId) {
+async function crearComentario(
+    publicacionId
+) {
 
-    const textarea =
+    const usuario =
         document.getElementById(
-            `comentario-${publicacionId}`
-        );
+            "nombreUsuario"
+        ).value.trim();
 
     const texto =
-        textarea.value.trim();
+        document.getElementById(
+            `comentario-${publicacionId}`
+        ).value.trim();
+
+    if (!usuario) {
+
+        alert(
+            "Escribe tu nombre."
+        );
+
+        return;
+
+    }
 
     if (!texto) {
 
@@ -441,10 +470,13 @@ async function crearComentario(publicacionId) {
 
     await guardarComentario(
         publicacionId,
+        usuario,
         texto
     );
 
-    textarea.value = "";
+    document.getElementById(
+        `comentario-${publicacionId}`
+    ).value = "";
 
     cargarComentarios(
         publicacionId

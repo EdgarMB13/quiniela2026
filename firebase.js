@@ -87,3 +87,60 @@ export async function obtenerPublicaciones() {
   return publicaciones;
 
 }
+
+// =====================================
+// FORO - GUARDAR COMENTARIO
+// =====================================
+
+export async function guardarComentario(
+  publicacionId,
+  texto
+) {
+
+  await addDoc(
+    collection(
+      db,
+      "publicaciones",
+      publicacionId,
+      "comentarios"
+    ),
+    {
+      texto,
+      fecha: new Date().toLocaleString()
+    }
+  );
+
+}
+
+// =====================================
+// FORO - OBTENER COMENTARIOS
+// =====================================
+
+export async function obtenerComentarios(
+  publicacionId
+) {
+
+  const snapshot =
+    await getDocs(
+      collection(
+        db,
+        "publicaciones",
+        publicacionId,
+        "comentarios"
+      )
+    );
+
+  const comentarios = [];
+
+  snapshot.forEach(doc => {
+
+    comentarios.push({
+      id: doc.id,
+      ...doc.data()
+    });
+
+  });
+
+  return comentarios;
+
+}

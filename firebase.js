@@ -94,6 +94,7 @@ export async function obtenerPublicaciones() {
 
 export async function guardarComentario(
   publicacionId,
+  usuario,
   texto
 ) {
 
@@ -105,6 +106,7 @@ export async function guardarComentario(
       "comentarios"
     ),
     {
+      usuario,
       texto,
       fecha: new Date().toLocaleString()
     }

@@ -1,7 +1,9 @@
 import {
   registrarVisita,
   guardarPublicacion,
-  obtenerPublicaciones
+  obtenerPublicaciones,
+  guardarComentario,
+  obtenerComentarios
 } from "./firebase.js";
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -347,6 +349,7 @@ async function mostrarPosts() {
 
             lista.innerHTML += `
                 <div class="post">
+
                     <h3>${post.titulo}</h3>
 
                     <small>
@@ -354,12 +357,66 @@ async function mostrarPosts() {
                     </small>
 
                     <p>${post.contenido}</p>
+
+                    <div id="comentarios-${post.id}">
+                        Cargando comentarios...
+                    </div>
+
+                    <textarea
+                        id="comentario-${post.id}"
+                        placeholder="Escribe un comentario"
+                    ></textarea>
+
+                    <button
+                        onclick="crearComentario('${post.id}')">
+                        Comentar
+                    </button>
+
                 </div>
             `;
 
         });
 
+    // AQUÍ VA
+  
+    for (const post of publicaciones) {
+
+        cargarComentarios(post.id);
+
+    }
+
 }
+
+// CARGAR COMENTARIOS
+async function cargarComentarios(publicacionId) {
+
+    const contenedor =
+        document.getElementById(
+            `comentarios-${publicacionId}`
+        );
+
+    if (!contenedor) return;
+
+    const comentarios =
+        await obtenerComentarios(
+            publicacionId
+        );
+
+    contenedor.innerHTML = "";
+
+    comentarios.forEach(comentario => {
+
+        contenedor.innerHTML += `
+            <div class="comentario">
+                ${comentario.texto}
+            </div>
+        `;
+
+    });
+
+}
+
+// FIN DE CARGAR COMENTARIOS
 
 async function crearPost() {
 

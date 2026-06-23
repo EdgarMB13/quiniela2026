@@ -1,4 +1,9 @@
-import { registrarVisita } from "./firebase.js";
+import {
+  registrarVisita,
+  guardarPublicacion,
+  obtenerPublicaciones
+} from "./firebase.js";
+from "./firebase.js";
 document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('nav ul li a');
   const sections = document.querySelectorAll('.section');
@@ -321,22 +326,10 @@ async function cargarDatos() {
 }
 
 // =====================================
-// FORO COMUNIDAD
+// FORO COMUNIDAD FIRESTORE
 // =====================================
 
-let publicaciones =
-    JSON.parse(localStorage.getItem("foroQuiniela")) || [];
-
-function guardarPosts() {
-
-    localStorage.setItem(
-        "foroQuiniela",
-        JSON.stringify(publicaciones)
-    );
-
-}
-
-function mostrarPosts() {
+async function mostrarPosts() {
 
     const lista =
         document.getElementById("listaPosts");
@@ -345,8 +338,10 @@ function mostrarPosts() {
 
     lista.innerHTML = "";
 
+    const publicaciones =
+        await obtenerPublicaciones();
+
     publicaciones
-        .slice()
         .reverse()
         .forEach(post => {
 
@@ -366,7 +361,7 @@ function mostrarPosts() {
 
 }
 
-function crearPost() {
+async function crearPost() {
 
     const titulo =
         document.getElementById("tituloPost").value.trim();
@@ -383,13 +378,10 @@ function crearPost() {
         return;
     }
 
-    publicaciones.push({
+    await guardarPublicacion(
         titulo,
-        contenido,
-        fecha: new Date().toLocaleString()
-    });
-
-    guardarPosts();
+        contenido
+    );
 
     document.getElementById("tituloPost").value = "";
     document.getElementById("contenidoPost").value = "";
@@ -401,7 +393,7 @@ function crearPost() {
 // Hace visible la función para el botón HTML
 window.crearPost = crearPost;
 
-// Cargar publicaciones guardadas
+// Cargar publicaciones al abrir la página
 document.addEventListener("DOMContentLoaded", () => {
     mostrarPosts();
 });
@@ -409,6 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // =====================================
 // FIN FORO
 // =====================================
+
 
 function llenarSelector() {
   const selector = document.getElementById("selectorParticipante");

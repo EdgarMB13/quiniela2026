@@ -410,7 +410,7 @@ contenedor.innerHTML += `
     <div class="comentario">
 
         <strong>
-            👤 ${comentario.usuario}
+            👤 ${comentario.usuario || "Anónimo"}
         </strong>
 
         <br>

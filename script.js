@@ -430,8 +430,9 @@ contenedor.innerHTML += `
     });
 
 }
-
 // FIN DE CARGAR COMENTARIOS
+
+
 
 //Crear comentarios
 async function crearComentario(
@@ -467,7 +468,12 @@ async function crearComentario(
         return;
 
     }
-
+//INICIO
+  localStorage.setItem(
+    "nombreUsuario",
+    usuario
+);
+//FIN  
     await guardarComentario(
         publicacionId,
         usuario,
@@ -520,7 +526,30 @@ window.crearComentario =
 
 // Cargar publicaciones al abrir la página
 document.addEventListener("DOMContentLoaded", () => {
+
+    const inputNombre =
+        document.getElementById(
+            "nombreUsuario"
+        );
+
+    if (inputNombre) {
+
+        const nombreGuardado =
+            localStorage.getItem(
+                "nombreUsuario"
+            );
+
+        if (nombreGuardado) {
+
+            inputNombre.value =
+                nombreGuardado;
+
+        }
+
+    }
+
     mostrarPosts();
+
 });
 
 // =====================================

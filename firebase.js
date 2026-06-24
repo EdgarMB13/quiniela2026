@@ -49,7 +49,8 @@ export async function registrarVisita() {
 
 export async function guardarPublicacion(
   titulo,
-  contenido
+  contenido,
+  usuario
 ) {
 
   await addDoc(
@@ -57,6 +58,7 @@ export async function guardarPublicacion(
     {
       titulo,
       contenido,
+      usuario,
       fecha: new Date().toLocaleString()
     }
   );

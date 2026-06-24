@@ -347,34 +347,40 @@ async function mostrarPosts() {
         .reverse()
         .forEach(post => {
 
-            lista.innerHTML += `
-                <div class="post">
+lista.innerHTML += `
+    <div class="post">
 
-                    <h3>${post.titulo}</h3>
+        <h3>${post.titulo}</h3>
 
-                    <small>
-                        ${post.fecha}
-                    </small>
+        <strong>
+            👤 ${post.usuario || "Anónimo"}
+        </strong>
 
-                    <p>${post.contenido}</p>
+        <br>
 
-                    <div id="comentarios-${post.id}">
-                        Cargando comentarios...
-                    </div>
+        <small>
+            ${post.fecha}
+        </small>
 
-                    <textarea
-                        id="comentario-${post.id}"
-                        placeholder="Escribe un comentario"
-                    ></textarea>
+        <p>${post.contenido}</p>
 
-                    <button
-                        onclick="crearComentario('${post.id}')">
-                        Comentar
-                    </button>
+        <div id="comentarios-${post.id}">
+            Cargando comentarios...
+        </div>
 
-                </div>
-            `;
+        <textarea
+            id="comentario-${post.id}"
+            placeholder="Escribe un comentario"
+        ></textarea>
 
+        <button
+            onclick="crearComentario('${post.id}')">
+            Comentar
+        </button>
+
+    </div>
+`;
+ 
         });
 
     for (const post of publicaciones) {
